@@ -80,22 +80,6 @@ function comment(form_modal) {
                     response.comment = comment; 
                     form[2].value = ''
                     commentSubmitBtn.innerHTML = `<i class="fa-regular fa-paper-plane">`
-                    let img;
-
-                    if (url.includes("index.php")) {
-                        img = './uploads/'+response.username+'/'+response.image;
-                    } else {
-                        img = '../uploads/'+response.username+'/'+response.image;
-                    }
-
-                    let imgusername = "<dt>"+response.username+"</dt>";
-                    let commentoutput = "<dd>&emsp; "+comment+"</dd>"
-                    
-                    let commenttag = htmlToElem(imgusername)
-                    let commenttag2 = htmlToElem(commentoutput)
-                    
-                    form_modal.querySelector('.user_comment').appendChild(commenttag);
-                    form_modal.querySelector('.user_comment').appendChild(commenttag2);
                     socket.emit('send_comment', response)
                     
                 } else {
@@ -108,6 +92,7 @@ function comment(form_modal) {
 
 
 socket.off('receive_comment').on('receive_comment', (data) => {
+    console.log(data);
         let url = document.URL;
         let img;
         
@@ -117,7 +102,7 @@ socket.off('receive_comment').on('receive_comment', (data) => {
             img = '../uploads/'+data.username+'/'+data.image;
         }
 
-        let imgusername = "<dt>"+data.username+"</dt>";
+        let imgusername = `<dt><img src='./uploads/${data.username}/${data.image}' /> ${data.username}</dt>`;
         let commentoutput = "<dd>&emsp; "+data.comment+"</dd>"
         
         let commenttag = htmlToElem(imgusername)
@@ -129,3 +114,29 @@ socket.off('receive_comment').on('receive_comment', (data) => {
         comment_modal.querySelector('.user_comment').appendChild(commenttag2);
 })
 
+
+
+
+
+
+
+
+
+
+//let img;
+
+// if (url.includes("index.php")) {
+//     img = './uploads/'+response.username+'/'+response.image;
+// } else {
+//     img = '../uploads/'+response.username+'/'+response.image;
+// }
+
+//<dt><img src='./uploads/".$poster['username']."/".$poster['profile_img']."' alt='userimg'> " . $poster['username'] . "</dt>
+// let imgusername = `<dt><img src='./uploads/${response.username}/${response.image}' alt='userimg' /> ${response.username}</dt>`;
+// let commentoutput = "<dd>&emsp; "+comment+"</dd>"
+
+// let commenttag = htmlToElem(imgusername)
+// let commenttag2 = htmlToElem(commentoutput)
+
+// form_modal.querySelector('.user_comment').appendChild(commenttag);
+// form_modal.querySelector('.user_comment').appendChild(commenttag2);

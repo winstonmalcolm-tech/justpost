@@ -104,7 +104,7 @@
                         <div class="modal-body">
                             <form method="post" id="index__register_form" class="index__register_form" enctype='multipart/form-data'>
                                 <div class="index__profile_pic_register">
-                                    <img src="./img/noprofilepic.jpg" alt="" id="index__profile_photo">
+                                    <img src="./images/noprofilepic.jpg" alt="" id="index__profile_photo">
                                     <input type="file" name="profile_pic" id="file">
                                     <label for="file" id="uploadBtn">Choose Photo</label>
                                 </div>

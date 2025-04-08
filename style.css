@@ -140,6 +140,7 @@ nav{
     width: 300px;
     padding: 0px 22px;
     clip-path: circle();
+    object-fit: contain;
     position: relative;
     left: -51%;
 }
