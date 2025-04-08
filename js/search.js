@@ -81,14 +81,21 @@ function showInputbar() {
     document.querySelector('.inputsearchbar').focus()
 }
 
-function returntoDefault() {
+function resetState(username) {
+    hideBox();
     if (window.matchMedia("(max-width: 600px)").matches) {
-        document.querySelector('.index__not_signed_in_handle').style.display= "block"
+        if (!username || username == "Unknown") {
+            document.querySelector('.index__not_signed_in_handle').style.display= "flex"
+        } else  {
+            document.querySelector('.index__user_handle').style.display= "flex"
+        }
+        
+        
         document.querySelector('.index__logo').style.display = "block"
-        document.querySelector('.index__user_handle').style.display= "block"
         document.querySelector('.searchicon').style.display= "block"
         document.querySelector('.index__search_bar').style.width = 'auto'
-        document.querySelector('.inputsearchbar').style.display = 'none';
+        document.querySelector('.inputsearchbar').style.display = 'none'
+        
     } 
 }
 

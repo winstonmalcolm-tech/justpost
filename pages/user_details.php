@@ -6,6 +6,7 @@
 
     $styleShow = "";
     $styleHide = "";
+    $username = "Unknown";
 
     if (!isset($_GET['user_id'])) {
         header("Location: ../index.php");
@@ -52,7 +53,7 @@
             <h1>Just Post🔥</h1>
         </div>
         <div class="index__search_bar">
-            <input type="text" placeholder="Search" onkeyup="searchUser(this.value)" class="inputsearchbar">
+            <input type="text" placeholder="Search" onkeyup="searchUser(this.value)" onblur="resetState('<?php echo $username ?>')" class="inputsearchbar">
             <i class="fa-solid fa-magnifying-glass searchicon" onclick="showInputbar()"></i>
             <div class="index__prediction_box">
                 <dl>

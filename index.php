@@ -40,7 +40,7 @@
             <h1>Just Post🔥</h1>
         </div>
         <div class="index__search_bar">
-            <input type="text" placeholder="Search" onkeyup="searchUser(this.value)" onfocusout="returntoDefault()" class="inputsearchbar">
+            <input type="text" placeholder="Search" onkeyup="searchUser(this.value)" onblur="resetState('<?php echo $username ?>')" class="inputsearchbar">
             <i class="fa-solid fa-magnifying-glass searchicon" onclick="showInputbar()"></i>
             <div class="index__prediction_box">
                 <dl>
@@ -474,7 +474,7 @@
 
         <!-- Right hand of the screen -->
         <section class="index__end_section">
-                <p>Copyright &copy; Malx_coder 2022</p>
+                <p>Copyright &copy; Malx_coder 2025</p>
         </section>
     </main>
     
