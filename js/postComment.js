@@ -80,8 +80,27 @@ function comment(form_modal) {
                     response.comment = comment; 
                     form[2].value = ''
                     commentSubmitBtn.innerHTML = `<i class="fa-regular fa-paper-plane">`
-                    socket.emit('send_comment', response)
+                    socket.emit('send_comment', response);
+
+                    let url = document.URL;
+                    let img;
                     
+                    if (url.includes("index.php")) {
+                        img = './uploads/'+response.username+'/'+response.image;
+                    } else {
+                        img = '../uploads/'+response.username+'/'+response.image;
+                    }
+
+                    let imgusername = `<dt><img src='./uploads/${response.username}/${response.image}' /> ${response.username}</dt>`;
+                    let commentoutput = "<dd>&emsp; "+response.comment+"</dd>"
+                    
+                    let commenttag = htmlToElem(imgusername)
+                    let commenttag2 = htmlToElem(commentoutput)
+
+                    let comment_modal = document.getElementById(response.commentContainer)
+                    
+                    comment_modal.querySelector('.user_comment').appendChild(commenttag);
+                    comment_modal.querySelector('.user_comment').appendChild(commenttag2);
                 } else {
                     console.log("error")
                 } 
@@ -92,7 +111,7 @@ function comment(form_modal) {
 
 
 socket.off('receive_comment').on('receive_comment', (data) => {
-    console.log(data);
+
         let url = document.URL;
         let img;
         
